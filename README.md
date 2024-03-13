@@ -1,6 +1,7 @@
 ## NvChad - ViiEx's Custom Configuration
 
-> [!WARNING] ⚠️ ⚠️ ⚠️ This config is now using NvChad v2.5 ⚠️ ⚠️ ⚠️
+> [!WARNING]
+> ⚠️ ⚠️ ⚠️ This config is now using NvChad v2.5 ⚠️ ⚠️ ⚠️
 
 A collection of customizations and enhancements designed to extend the popular
 NvChad: [https://github.com/NvChad/NvChad](https://github.com/NvChad/NvChad)
