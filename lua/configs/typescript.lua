@@ -4,6 +4,7 @@ if not status_ok then
 	return
 end
 
+local on_attach = require("nvchad.configs.lspconfig").on_attach
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 ts.setup({
@@ -13,17 +14,7 @@ ts.setup({
 		fallback = true, -- fall back to standard LSP definition on failure
 	},
 	server = {
-		on_attach = function(client, bufnr)
-			if client.server_capabilities.signatureHelpProvider then
-				require("nvchad.signature").setup(client)
-			end
-
-			if
-				not utils.load_config().ui.lsp_semantic_tokens and client.supports_method("textDocument/semanticTokens")
-			then
-				client.server_capabilities.semanticTokensProvider = nil
-			end
-		end,
+		on_attach = on_attach,
 		capabilities = capabilities,
 	},
 })
