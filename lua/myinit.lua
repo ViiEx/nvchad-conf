@@ -9,13 +9,13 @@
 local Format = vim.api.nvim_create_augroup("Format", { clear = true })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = Format,
-  pattern = "*.tsx,*.ts,*.jsx,*.js",
-  callback = function()
-    if vim.fn.exists ":TypescriptFixAll" then
-      vim.cmd "TypescriptFixAll!"
-    end
-  end,
+	group = Format,
+	pattern = "*.tsx,*.ts,*.jsx,*.js",
+	callback = function()
+		if vim.fn.exists(":TypescriptFixAll") then
+			vim.cmd("TypescriptFixAll!")
+		end
+	end,
 })
 
 -- Copilot

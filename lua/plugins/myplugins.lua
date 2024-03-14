@@ -52,6 +52,13 @@ local plugins = {
 		},
 	},
 
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		opts = {
+			scope = { enabled = false },
+		},
+	},
+
 	-- Install a plugin
 	{
 		"max397574/better-escape.nvim",
