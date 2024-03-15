@@ -2,25 +2,6 @@ local overrides = require("configs.overrides")
 
 local plugins = {
 
-	-- Override plugin definition options
-
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			-- format & linting
-			{
-				"jose-elias-alvarez/null-ls.nvim",
-				config = function()
-					require("configs.null-ls")
-				end,
-			},
-		},
-		config = function()
-			require("nvchad.configs.lspconfig")
-			require("configs.lspconfig")
-		end, -- Override to setup mason-lspconfig
-	},
-
 	-- override plugin configs
 	{
 		"williamboman/mason.nvim",
@@ -241,7 +222,8 @@ local plugins = {
 	},
 
 	{
-		"jose-elias-alvarez/typescript.nvim",
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		event = "LspAttach",
 		config = function()
 			require("configs.typescript")
