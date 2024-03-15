@@ -18,6 +18,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
+})
+
 -- Copilot
 -- vim.g.copilot_no_tab_map = true
 -- vim.g.copilot_assume_mapped = true
