@@ -37,24 +37,19 @@ M.ui = {
 	},
 
 	statusline = {
-		-- NOTE: Overide modules in statusline seems to be removed for now.
-		-- I will keep this here for reference.
-		-- NOTE: Try to find a different way to override the statusline
-		overriden_modules = function(modules)
-			table.insert(
-				modules,
-				9,
-				(function()
-					--- @diagnostic disable: deprecated
-					for _, client in pairs(vim.lsp.get_active_clients()) do
-						if client.name == "copilot" then
-							return "%#TeSTTCopilot#" .. "   "
-						end
+		-- order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd", "cursor" }, -- default
+		order = { "mode", "file", "diagnostics", "git", "%=", "lsp_msg", "%=", "lsp", "copilot", "cursor", "cwd" }, -- vscode style
+		modules = {
+			copilot = function()
+				--- @diagnostic disable: deprecated
+				for _, client in pairs(vim.lsp.get_active_clients()) do
+					if client.name == "copilot" then
+						return "%#TeSTTCopilot#" .. "   "
 					end
-					return "%#TeSTTCopilot#" .. "   "
-				end)()
-			)
-		end,
+				end
+				return "%#TeSTTCopilot#" .. "   "
+			end,
+		},
 		theme = "vscode_colored",
 	},
 
