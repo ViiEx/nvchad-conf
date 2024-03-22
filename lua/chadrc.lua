@@ -38,7 +38,20 @@ M.ui = {
 
 	statusline = {
 		-- order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd", "cursor" }, -- default
-		order = { "mode", "file", "diagnostics", "git", "%=", "lsp_msg", "%=", "lsp", "copilot", "cursor", "cwd" }, -- vscode style
+		order = {
+			"mode",
+			"file",
+			"record_macro",
+			"diagnostics",
+			"git",
+			"%=",
+			"lsp_msg",
+			"%=",
+			"lsp",
+			"copilot",
+			"cursor",
+			"cwd",
+		}, -- vscode style
 		modules = {
 			copilot = function()
 				--- @diagnostic disable: deprecated
@@ -48,6 +61,12 @@ M.ui = {
 					end
 				end
 				return "%#TeSTTCopilot#" .. "   "
+			end,
+
+			record_macro = function()
+				if require("noice").api.statusline.mode.get() then
+					return "  " .. vim.fn.reg_recording()
+				end
 			end,
 		},
 		theme = "vscode_colored",
