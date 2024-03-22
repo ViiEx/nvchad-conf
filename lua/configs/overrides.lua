@@ -34,8 +34,13 @@ M.mason = {
 		"css-lsp",
 		"html-lsp",
 		"typescript-language-server",
-		"deno",
+		-- "deno", -- NOTE: maybe in the future
 		"prettier",
+		"emmet-language-server",
+		"json-lsp",
+		"phpactor",
+		"tailwindcss-language-server",
+		"marksman",
 
 		-- c/cpp stuff
 		"clangd",

@@ -39,6 +39,13 @@ local plugins = {
 		},
 	},
 
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("configs.lspconfig")
+		end,
+	},
+
 	-- Install a plugin
 	{
 		"max397574/better-escape.nvim",
