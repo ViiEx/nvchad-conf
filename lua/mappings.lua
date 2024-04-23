@@ -54,3 +54,10 @@ map("v", "<leader>cm", "<cmd> CBllbox14 <cr>", { desc = "Marked", noremap = true
 -- Visual Mode Mappings
 map("x", "<leader>ccv", "<cmd> CopilotChatVisual <cr>", { desc = "🤖 CopilotChat - Open in vertical split" })
 map("x", "<leader>ccx", "<cmd> CopilotChatInPlace <cr>", { desc = "🤖 CopilotChat - Run in-place code" })
+
+map({ "n", "i" }, "<M-Up>", "<Esc><cmd>m-2<CR>", { desc = "Move Line Up (Insert)", noremap = true, silent = true })
+map({ "n", "i" }, "<M-Down>", "<Esc><cmd>m+<CR>", { desc = "Move Line Down (Insert)", noremap = true, silent = true })
+map("x", "<M-Up>", ":move '<-2<CR>gv-gv", { desc = "Move Line Up (Visual)", noremap = true, silent = true })
+map("x", "<M-Down>", ":move '>+1<CR>gv-gv", { desc = "Move Line Down (Visual)", noremap = true, silent = true })
+
+map({ "n", "v" }, "<C-a>", "ggVG", { desc = "Select All", noremap = true, silent = true })
