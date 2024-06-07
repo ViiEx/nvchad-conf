@@ -47,6 +47,23 @@ lspconfig.lua_ls.setup({
 	},
 })
 
+local signs = {
+	Error = "🤬",
+	Warn = "😤",
+	Info = "🤔",
+	Hint = "🤯",
+}
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+-- https://neovim.io/doc/user/diagnostic.html#diagnostic-api
+vim.diagnostic.config({
+	underline = false,
+	virtual_text = false,
+})
+
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		on_attach = on_attach,
