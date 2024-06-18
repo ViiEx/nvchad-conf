@@ -4,8 +4,8 @@ local M = {}
 -- Path to overriding theme and highlights files
 local highlights = require("highlights")
 M.ui = {
-	theme = "oxocarbon",
-	theme_toggle = { "oxocarbon", "one_light" },
+	theme = "everforest",
+	theme_toggle = { "everforest", "one_light" },
 
 	hl_override = highlights.override,
 	hl_add = highlights.add,
