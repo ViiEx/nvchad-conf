@@ -38,7 +38,7 @@ M.mason = {
 		"prettier",
 		"emmet-language-server",
 		"json-lsp",
-		"phpactor",
+		-- "phpactor",
 		"tailwindcss-language-server",
 		"marksman",
 
@@ -59,7 +59,7 @@ M.nvimtree = {
 		highlight_git = true,
 		icons = {
 			show = {
-				git = true,
+				git = false,
 			},
 		},
 	},
