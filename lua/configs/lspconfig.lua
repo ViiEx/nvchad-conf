@@ -60,7 +60,7 @@ end
 
 -- https://neovim.io/doc/user/diagnostic.html#diagnostic-api
 vim.diagnostic.config({
-	underline = false,
+	underline = true,
 	virtual_text = false,
 })
 
