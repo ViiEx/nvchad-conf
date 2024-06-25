@@ -11,7 +11,6 @@ mason_lspconfig.setup({
 		"clangd",
 		"emmet_language_server",
 		"jsonls",
-		"phpactor",
 		"tailwindcss",
 		"marksman",
 		"tsserver",
