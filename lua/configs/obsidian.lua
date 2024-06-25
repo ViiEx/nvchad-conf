@@ -5,7 +5,7 @@ if not status_ok then
 end
 
 --- Check if a file or directory exists in this path
-function exists(file)
+local function exists(file)
 	local ok, err, code = os.rename(file, file)
 	if not ok then
 		if code == 13 then
@@ -17,21 +17,28 @@ function exists(file)
 end
 
 --- Check if a directory exists in this path
-function isdir(path)
+local function isdir(path)
 	-- "/" works on both Unix and Windows
 	return exists(path .. "/")
+end
+
+local handleVault = function()
+	if not isdir(vim.fn.expand("~/Documents/Vaults")) then
+		vim.notify("Vaults directory does not exist. Creating it now.")
+		os.execute("mkdir " .. vim.fn.expand("~/Documents/Vaults"))
+	end
 end
 
 local workspacesHandler = function()
 	local workspaces = {}
 
-	if not isdir(vim.fn.expand("~/Documents/Vaults")) then
-		vim.notify("Vaults directory does not exist. Creating it now.")
-		os.execute("mkdir " .. vim.fn.expand("~/Documents/Vaults"))
-	end
-
 	local i, vaults, popen = 0, {}, io.popen
 	local pfile = popen("ls ~/Documents/Vaults")
+	-- check if pfile is nil
+	if not pfile then
+		handleVault()
+		pfile = popen("ls ~/Documents/Vaults")
+	end
 	for filename in pfile:lines() do
 		i = i + 1
 		vaults[i] = filename
