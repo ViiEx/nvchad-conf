@@ -9,12 +9,6 @@ M.override = {
 	Comment = {
 		italic = true,
 	},
-	DiagnosticWarn = {
-		undercurl = true,
-	},
-	DiagnosticError = {
-		undercurl = true,
-	},
 }
 
 ---@type HLTable
