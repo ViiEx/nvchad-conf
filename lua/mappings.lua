@@ -22,26 +22,6 @@ map("n", "<leader>cb", "<cmd> CBccbox <cr>", { desc = "Box Title", noremap = tru
 map("n", "<leader>ct", "<cmd> CBllline <cr>", { desc = "Titled Line", noremap = true, silent = true })
 map("n", "<leader>cl", "<cmd> CBline <cr>", { desc = "Simple Line", noremap = true, silent = true })
 map("n", "<leader>cm", "<cmd> CBllbox14 <cr>", { desc = "Marked", noremap = true, silent = true })
-map("n", "<leader>cce", "<cmd> CopilotChatExplain <cr>", { desc = "🤖 CopilotChat - Explain code" })
-map("n", "<leader>cct", "<cmd> CopilotChatTests <cr>", { desc = "🤖 CopilotChat - Generate tests" })
-map("n", "<leader>ccT", "<cmd> CopilotChatVsplitToggle <cr>", { desc = "🤖 CopilotChat - Toggle Vsplit" })
-map("n", "<leader>ccf", "<cmd> CopilotChatFixDiagnostic <cr>", { desc = "🤖 CopilotChat - Fix diagnostic" })
-map(
-	"n",
-	"<leader>ccr",
-	"<cmd> CopilotChatReset <cr>",
-	{ desc = "🤖 CopilotChat - Reset chat history and clear buffer" }
-)
-map("n", "<leader>cci", function()
-	local input = vim.fn.input("🤖 CopilotChat - Input: ")
-	if input ~= "" then
-		vim.cmd("CopilotChat " .. input)
-	end
-end, { desc = "🤖 CopilotChat - Input" })
-map("n", "<leader>cch", function()
-	local actions = require("CopilotChat.actions")
-	require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-end, { desc = "🤖 CopilotChat - Prompt actions" })
 map("n", "<A-\\>", "<cmd> <cr>", { desc = "" })
 map(
 	"n",
@@ -57,8 +37,6 @@ map("v", "<leader>ct", "<cmd> CBllline <cr>", { desc = "Titled Line", noremap = 
 map("v", "<leader>cm", "<cmd> CBllbox14 <cr>", { desc = "Marked", noremap = true, silent = true })
 
 -- Visual Mode Mappings
-map("x", "<leader>ccv", "<cmd> CopilotChatVisual <cr>", { desc = "🤖 CopilotChat - Open in vertical split" })
-map("x", "<leader>ccx", "<cmd> CopilotChatInPlace <cr>", { desc = "🤖 CopilotChat - Run in-place code" })
 
 map({ "n", "i" }, "<M-Up>", "<Esc><cmd>m-2<CR>", { desc = "Move Line Up (Insert)", noremap = true, silent = true })
 map({ "n", "i" }, "<M-Down>", "<Esc><cmd>m+<CR>", { desc = "Move Line Down (Insert)", noremap = true, silent = true })
