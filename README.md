@@ -20,11 +20,13 @@ foundation that NvChad provides.
 - **Custom Keybindings:** Additional keybindings for various plugins and
   features.
 - **Tmux Integration:** Added Tmux integration with Tmux Navigator.
-- **Note taking:** Added support for obsidian with obsidian.nvim.
+- **Note taking:** Added support for obsidian with obsidian.nvim and neorg.
 
 ⚠️ Prerequisites
 
-- None
+- [LazyGit](https://github.com/jesseduffield/lazygit)
+- [Ripgrep](https://github.com/BurntSushi/ripgrep)
+- [Fd](https://github.com/sharkdp/fd) (optional)
 
 ⚙️ Installation
 
@@ -42,7 +44,10 @@ customization options affecting the core of your Neovim setup.
 
 👀 Screenshots
 
-[Coming soon!]
+![Screenshot_1](./.assets/Screenshot_20240711_103001.png)
+![Screenshot_2](./.assets/Screenshot_20240711_103044.png)
+![Screenshot_3](./.assets/Screenshot_20240711_103151.png)
+![Screenshot_4](./.assets/Screenshot_20240711_103303.png)
 
 🙋 Need Help?
 
