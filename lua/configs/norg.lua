@@ -33,7 +33,6 @@ local opts = {
 		["core.neorgcmd"] = {},
 		["core.highlights"] = {},
 		["core.autocommands"] = {},
-		["core.mode"] = {},
 		["core.integrations.treesitter"] = {},
 	},
 }
