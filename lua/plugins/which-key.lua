@@ -3,7 +3,7 @@ return {
 		"folke/which-key.nvim",
 		opts = {
 			---@type false | "classic" | "modern" | "helix"
-			preset = "helix",
+			preset = "classic",
 			-- Delay before showing the popup. Can be a number or a function that returns a number.
 			---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
 			delay = function(ctx)
@@ -20,23 +20,19 @@ return {
 			spec = {},
 			-- show a warning when issues were detected with your mappings
 			notify = true,
-			-- Enable/disable WhichKey for certain mapping modes
-			modes = {
-				n = true, -- Normal mode
-				i = true, -- Insert mode
-				x = true, -- Visual mode
-				s = true, -- Select mode
-				o = true, -- Operator pending mode
-				t = true, -- Terminal mode
-				c = true, -- Command mode
-				-- Start hidden and wait for a key to be pressed before showing the popup
-				-- Only used by enabled xo mapping modes.
-				-- Set to false to show the popup immediately (after the delay)
-				defer = {
-					["<C-V>"] = true,
-					V = true,
-				},
+			-- Which-key automatically sets up triggers for your mappings.
+			-- But you can disable this and setup the triggers manually.
+			-- Check the docs for more info.
+			---@type wk.Spec
+			triggers = {
+				{ "<auto>", mode = "nixsotc" },
 			},
+			-- Start hidden and wait for a key to be pressed before showing the popup
+			-- Only used by enabled xo mapping modes.
+			---@param ctx { mode: string, operator: string }
+			defer = function(ctx)
+				return vim.list_contains({ "<C-V>", "V" }, ctx.mode)
+			end,
 			plugins = {
 				marks = true, -- shows a list of your marks on ' and `
 				registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
@@ -56,7 +52,7 @@ return {
 					g = true, -- bindings for prefixed with g
 				},
 			},
-			---@type wk.Win
+			---@type wk.Win.opts
 			win = {
 				-- don't allow the popup to overlap with the cursor
 				no_overlap = true,
@@ -78,7 +74,6 @@ return {
 			layout = {
 				width = { min = 20 }, -- min and max width of the columns
 				spacing = 3, -- spacing between columns
-				align = "left", -- align columns left, center or right
 			},
 			keys = {
 				scroll_down = "<c-d>", -- binding to scroll down inside the popup
@@ -100,6 +95,7 @@ return {
 			-- expand = function(node)
 			--   return not node.desc -- expand all nodes without a description
 			-- end,
+			-- Functions/Lua Patterns for formatting the labels
 			---@type table<string, ({[1]:string, [2]:string}|fun(str:string):string)[]>
 			replace = {
 				key = {
@@ -109,7 +105,7 @@ return {
 					-- { "<Space>", "SPC" },
 				},
 				desc = {
-					{ "<Plug>%((.*)%)", "%1" },
+					{ "<Plug>%(?(.*)%)?", "%1" },
 					{ "^%+", "" },
 					{ "<[cC]md>", "" },
 					{ "<[cC][rR]>", "" },
@@ -124,8 +120,12 @@ return {
 				separator = "➜", -- symbol used between a key and it's label
 				group = "+", -- symbol prepended to a group
 				ellipsis = "…",
+				-- set to false to disable all mapping icons,
+				-- both those explicitely added in a mapping
+				-- and those from rules
+				mappings = true,
 				--- See `lua/which-key/icons.lua` for more details
-				--- Set to `false` to disable keymap icons
+				--- Set to `false` to disable keymap icons from rules
 				---@type wk.IconRule[]|false
 				rules = {},
 				-- use the highlights from mini.icons
@@ -139,13 +139,14 @@ return {
 					Right = " ",
 					C = "󰘴 ",
 					M = "󰘵 ",
+					D = "󰘳 ",
 					S = "󰘶 ",
 					CR = "󰌑 ",
 					Esc = "󱊷 ",
 					ScrollWheelDown = "󱕐 ",
 					ScrollWheelUp = "󱕑 ",
 					NL = "󰌑 ",
-					BS = "⌫",
+					BS = "󰁮",
 					Space = "󱁐 ",
 					Tab = "󰌒 ",
 					F1 = "󱊫",
@@ -164,19 +165,10 @@ return {
 			},
 			show_help = true, -- show a help message in the command line for using WhichKey
 			show_keys = true, -- show the currently pressed key and its label as a message in the command line
-			-- Which-key automatically sets up triggers for your mappings.
-			-- But you can disable this and setup the triggers yourself.
-			-- Be aware, that triggers are not needed for visual and operator pending mode.
-			triggers = true, -- automatically setup triggers
+			-- disable WhichKey for certain buf types and file types.
 			disable = {
-				-- disable WhichKey for certain buf types and file types.
 				ft = {},
 				bt = {},
-				-- disable a trigger for a certain context by returning true
-				---@type fun(ctx: { keys: string, mode: string, plugin?: string }):boolean?
-				trigger = function(ctx)
-					return false
-				end,
 			},
 			debug = false, -- enable wk.log in the current directory
 		},
