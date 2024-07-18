@@ -25,7 +25,7 @@ map("n", "<leader>cm", "<cmd> CBllbox14 <cr>", { desc = "Marked", noremap = true
 map("n", "<A-\\>", "<cmd> <cr>", { desc = "" })
 map(
 	"n",
-	"<leader>xx",
+	"<leader>fx",
 	"<cmd> Telescope file_browser path=%:p:h select_buffer=true <cr>",
 	{ desc = "📂 File Browser" }
 )
