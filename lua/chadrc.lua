@@ -1,14 +1,20 @@
 ---@type ChadrcConfig
 local M = {}
 
+local core = require("utils.core")
+
 -- Path to overriding theme and highlights files
 local highlights = require("highlights")
 M.ui = {
 	theme = "nightfox",
 	theme_toggle = { "nightfox", "one_light" },
 
+	lsp_semantic_tokens = false,
+
 	hl_override = highlights.override,
 	hl_add = highlights.add,
+
+	statusline = core.statusline,
 
 	cmp = {
 		icons = true,
@@ -32,44 +38,35 @@ M.ui = {
 		},
 	},
 
-	statusline = {
-		-- order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "cwd", "cursor" }, -- default
-		order = {
-			"mode",
-			"file",
-			"record_macro",
-			"diagnostics",
-			"git",
-			"%=",
-			"lsp_msg",
-			"%=",
-			"lsp",
-			"copilot",
-			"cursor",
-			"cwd",
-		}, -- vscode style
-		modules = {
-			copilot = function()
-				--- @diagnostic disable: deprecated
-				for _, client in pairs(vim.lsp.get_active_clients()) do
-					if client.name == "copilot" then
-						return "%#TeSTTCopilot#" .. "   "
-					end
-				end
-				return "%#TeSTTCopilot#" .. "   "
-			end,
-
-			record_macro = function()
-				if require("noice").api.statusline.mode.get() then
-					return "  " .. vim.fn.reg_recording()
-				end
-			end,
-		},
-		theme = "vscode_colored",
-	},
-
 	telescope = {
 		style = "borderless",
+	},
+}
+
+M.base46 = {
+	integrations = {
+		"blankline",
+		"cmp",
+		"defaults",
+		"devicons",
+		"git",
+		"lsp",
+		"mason",
+		"nvcheatsheet",
+		"nvdash",
+		"nvimtree",
+		"statusline",
+		"syntax",
+		"tbline",
+		"telescope",
+		"whichkey",
+		"dap",
+		"hop",
+		"treesitter",
+		"rainbowdelimiters",
+		"todo",
+		"trouble",
+		"notify",
 	},
 }
 
