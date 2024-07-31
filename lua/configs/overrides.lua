@@ -10,8 +10,8 @@ M.treesitter = {
 		"typescript",
 		"tsx",
 		"c",
-		"markdown",
-		"markdown_inline",
+		-- "markdown",
+		-- "markdown_inline",
 	},
 	indent = {
 		enable = true,

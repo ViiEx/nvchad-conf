@@ -6,5 +6,6 @@ return {
 		config = function()
 			require("configs.obsidian")
 		end,
+		dependencies = "OXY2DEV/markview.nvim",
 	},
 }
