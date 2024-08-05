@@ -29,6 +29,8 @@ map(
 	"<cmd> Telescope file_browser path=%:p:h select_buffer=true <cr>",
 	{ desc = "📂 File Browser" }
 )
+map("n", "<leader>ss", "<cmd> SearchBoxIncSearch <cr>", { desc = "SearchBox", noremap = true, silent = true })
+map("n", "<A-p>", "<cmd> Telescope commander <cr>", { desc = "Commander", noremap = true, silent = true })
 
 -- Visual/Select Mode Mappings
 map("v", ">", ">gv", { desc = "Indent" })

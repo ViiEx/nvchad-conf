@@ -17,6 +17,8 @@ local function filenames_list(filename, extensions)
 end
 
 M.treesitter = {
+	sync_install = true,
+	auto_install = true,
 	ensure_installed = {
 		"vim",
 		"lua",
@@ -26,6 +28,12 @@ M.treesitter = {
 		"typescript",
 		"tsx",
 		"c",
+		"svelte",
+		"vue",
+		"php",
+		"glimmer",
+		"rescript",
+		"embedded_template",
 		-- "markdown",
 		-- "markdown_inline",
 	},
