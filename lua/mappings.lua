@@ -19,4 +19,8 @@ map("n", "<leader>lr", "<cmd> lspsaga rename <cr>", { desc = "rename symbol" })
 map("n", "<leader>ld", "<cmd> lspsaga preview_definition <cr>", { desc = "preview definition" })
 map("n", "<leader>ld", "<cmd> lspsaga hover_doc <cr>", { desc = "hover doc" })
 map("n", "<leader>lh", "<cmd> lspsaga show_line_diagnostics <cr>", { desc = "show line diagnostics" })
+
+map("n", "<C-q>", function()
+  require("nvchad.tabufline").close_buffer()
+end, { desc = "buffer close" })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
