@@ -104,8 +104,8 @@ return {
     end,
     event = "BufRead",
   },
-  {
-    "hrsh7th/nvim-cmp",
-    opts = require "configs.nvim-cmp",
-  },
+  --{
+  --  "hrsh7th/nvim-cmp",
+  --  opts = require "configs.nvim-cmp",
+  --},
 }

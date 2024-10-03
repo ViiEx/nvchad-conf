@@ -16,30 +16,20 @@ M.base46 = {
 
 M.ui = {
   cmp = {
-    icons = true,
-    style = "atom",
-    selected_item_bg = "simple",
-  },
-
-  nvdash = {
-    load_on_startup = true,
-    header = {
-      [[      ____                ]],
-      [[     /___/\_              ]],
-      [[    _\   \/_/\__          ]],
-      [[  __\       \/_/\         ]],
-      [[  \   __    __ \ \        ]],
-      [[ __\  \_\   \_\ \ \   __  ]],
-      [[/_/\\   __   __  \ \_/_/\ ]],
-      [[\_\/_\__\/\__\/\__\/_\_\/ ]],
-      [[   \_\/_/\       /_\_\/   ]],
-      [[      \_\/       \_\/     ]],
+    lspkind_text = true,
+    style = "default", -- default/flat_light/flat_dark/atom/atom_colored
+    format_colors = {
+      tailwind = true,
     },
   },
 
   telescope = {
     style = "bordered",
   },
+}
+
+M.nvdash = {
+  load_on_startup = true,
 }
 
 M.mason = {
