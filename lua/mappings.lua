@@ -23,4 +23,8 @@ map("n", "<leader>lh", "<cmd> lspsaga show_line_diagnostics <cr>", { desc = "sho
 map("n", "<C-q>", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer close" })
+
+map("n", "<C-t>", function()
+  require("nvchad.themes").open { border = true }
+end, { desc = "Theme switcher" })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
