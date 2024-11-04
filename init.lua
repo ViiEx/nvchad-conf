@@ -35,3 +35,7 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+vim.api.nvim_create_user_command("GitCommitUI", function()
+  require("gcmh").start()
+end, {})

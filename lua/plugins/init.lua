@@ -104,10 +104,19 @@ return {
     end,
     event = "BufRead",
   },
-  --{
-  --  "hrsh7th/nvim-cmp",
-  --  opts = require "configs.nvim-cmp",
-  --},
+  {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      sources = {
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "nvim_lua" },
+        { name = "path" },
+        { name = "css_classes" },
+      },
+    },
+  },
   {
     "OXY2DEV/markview.nvim",
     lazy = false, -- Recommended
@@ -120,6 +129,27 @@ return {
       "nvim-treesitter/nvim-treesitter",
 
       "nvim-tree/nvim-web-devicons",
+    },
+  },
+
+  {
+    dir = "~/Documents/neovim-dev/gcmh-new.nvim",
+    dev = true,
+    lazy = false,
+  },
+
+  {
+    "grapp-dev/nui-components.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+  },
+
+  {
+    dir = "~/Documents/neovim-dev/cmp_classes",
+    dev = true,
+    dependencies = {
+      "hrsh7th/nvim-cmp",
     },
   },
 }

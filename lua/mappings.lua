@@ -20,6 +20,12 @@ map("n", "<leader>ld", "<cmd> lspsaga preview_definition <cr>", { desc = "previe
 map("n", "<leader>ld", "<cmd> lspsaga hover_doc <cr>", { desc = "hover doc" })
 map("n", "<leader>lh", "<cmd> lspsaga show_line_diagnostics <cr>", { desc = "show line diagnostics" })
 
+-- Copy to clipboard
+map("v", "<C-c>", '"+y', { desc = "copy to clipboard" })
+
+map("i", "<C-v>", '<ESC>"+pa', { desc = "paste from clipboard" })
+map("n", "<C-v>", '"+p', { desc = "paste from clipboard" })
+
 map("n", "<C-q>", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer close" })
