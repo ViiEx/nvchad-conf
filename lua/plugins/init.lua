@@ -17,10 +17,6 @@ return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "antosha417/nvim-lsp-file-operations" },
     opts = require "configs.nvim-tree",
-    config = function(_, opts)
-      require("nvim-tree").setup(opts)
-      require("nvim-tree.diagnostics").update()
-    end,
   },
 
   {
@@ -38,7 +34,7 @@ return {
 
   {
     "nvim-neorg/neorg",
-    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+    lazy = false,  -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
     version = "*", -- Pin Neorg to the latest stable release
     config = function()
       require "configs.neorg"
@@ -132,11 +128,11 @@ return {
     },
   },
 
-  {
-    dir = "~/Documents/neovim-dev/gcmh-new.nvim",
-    dev = true,
-    lazy = false,
-  },
+  -- {
+  --   dir = "~/Documents/neovim-dev/gcmh-new.nvim",
+  --   dev = true,
+  --   lazy = false,
+  -- },
 
   {
     "grapp-dev/nui-components.nvim",
@@ -145,11 +141,22 @@ return {
     },
   },
 
+  -- {
+  --   dir = "~/Documents/neovim-dev/cmp_classes",
+  --   dev = true,
+  --   dependencies = {
+  --     "hrsh7th/nvim-cmp",
+  --   },
+  -- },
+
   {
-    dir = "~/Documents/neovim-dev/cmp_classes",
-    dev = true,
-    dependencies = {
-      "hrsh7th/nvim-cmp",
-    },
+    "jubnzv/virtual-types.nvim",
+  },
+
+  {
+    "davidmh/mdx.nvim",
+    config = true,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    lazy = false,
   },
 }
