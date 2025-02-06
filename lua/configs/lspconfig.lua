@@ -13,6 +13,7 @@ local servers = {
   "tailwindcss",
   "marksman",
   "ts_ls",
+  "mdx-analuzer",
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 

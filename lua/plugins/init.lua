@@ -17,10 +17,6 @@ return {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "antosha417/nvim-lsp-file-operations" },
     opts = require "configs.nvim-tree",
-    config = function(_, opts)
-      require("nvim-tree").setup(opts)
-      require("nvim-tree.diagnostics").update()
-    end,
   },
 
   {
@@ -38,7 +34,7 @@ return {
 
   {
     "nvim-neorg/neorg",
-    lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
+    lazy = false,  -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
     version = "*", -- Pin Neorg to the latest stable release
     config = function()
       require "configs.neorg"
@@ -104,10 +100,19 @@ return {
     end,
     event = "BufRead",
   },
-  --{
-  --  "hrsh7th/nvim-cmp",
-  --  opts = require "configs.nvim-cmp",
-  --},
+  {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      sources = {
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "nvim_lua" },
+        { name = "path" },
+        { name = "css_classes" },
+      },
+    },
+  },
   {
     "OXY2DEV/markview.nvim",
     lazy = false, -- Recommended
@@ -121,5 +126,37 @@ return {
 
       "nvim-tree/nvim-web-devicons",
     },
+  },
+
+  -- {
+  --   dir = "~/Documents/neovim-dev/gcmh-new.nvim",
+  --   dev = true,
+  --   lazy = false,
+  -- },
+
+  {
+    "grapp-dev/nui-components.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+  },
+
+  -- {
+  --   dir = "~/Documents/neovim-dev/cmp_classes",
+  --   dev = true,
+  --   dependencies = {
+  --     "hrsh7th/nvim-cmp",
+  --   },
+  -- },
+
+  {
+    "jubnzv/virtual-types.nvim",
+  },
+
+  {
+    "davidmh/mdx.nvim",
+    config = true,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    lazy = false,
   },
 }

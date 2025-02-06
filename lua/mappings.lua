@@ -20,7 +20,29 @@ map("n", "<leader>ld", "<cmd> lspsaga preview_definition <cr>", { desc = "previe
 map("n", "<leader>ld", "<cmd> lspsaga hover_doc <cr>", { desc = "hover doc" })
 map("n", "<leader>lh", "<cmd> lspsaga show_line_diagnostics <cr>", { desc = "show line diagnostics" })
 
+-- Copy to clipboard
+map("v", "<C-c>", '"+y', { desc = "copy to clipboard" })
+
+map("i", "<C-v>", '<ESC>"+pa', { desc = "paste from clipboard" })
+map("n", "<C-v>", '"+p', { desc = "paste from clipboard" })
+
 map("n", "<C-q>", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "buffer close" })
+
+map("n", "<C-t>", function()
+  require("nvchad.themes").open { border = true }
+end, { desc = "Theme switcher" })
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+
+vim.keymap.set("n", "<C-t>", function()
+  require("menu").open "default"
+end, {})
+
+-- mouse users + nvimtree users!
+vim.keymap.set("n", "<RightMouse>", function()
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true })
+end, {})

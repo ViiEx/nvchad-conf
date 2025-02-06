@@ -11,6 +11,10 @@ return {
     },
   },
 
+  dev = {
+    path = "~/Documents/neovim-dev/",
+  },
+
   performance = {
     rtp = {
       disabled_plugins = {
